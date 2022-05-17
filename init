@@ -1,7 +1,17 @@
 #!/bin/bash
-cd master-compiler
-npm install
-npm link
+
+function failIfCommandNotExist(){
+    if ! command -v $1 &> /dev/null
+    then
+        echo "command \"$1\" could not be found."
+        exit 1
+    fi
+}
+
+failIfCommandNotExist yarn
+cd transpiler
+yarn install
+yarn link
 cd ../app
-npm install
-npm link master-compiler
+yarn install
+yarn link transpiler
