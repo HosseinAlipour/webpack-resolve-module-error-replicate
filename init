@@ -1,0 +1,7 @@
+#!/bin/bash
+cd master-compiler
+npm install
+npm link
+cd ../app
+npm install
+npm link master-compiler
